@@ -1,0 +1,19 @@
+﻿@page
+@using EV.Abp.IdentityServer.Pages
+@inherits IdentityServerPageBase
+@model IndexModel
+@section styles {
+    <link href="~/pages/index.css" rel="stylesheet" />
+}
+<abp-card>
+    <abp-card-header>Welcome</abp-card-header>
+    <abp-card-body>
+        <p>WelcomeMessage</p>
+        @if (!CurrentUser.IsAuthenticated)
+        {
+            <p><a abp-button="Primary" href="/Account/Login"><i class="fa fa-sign-in"></i> Login</a></p>
+        }
+        <hr/>
+        <p class="text-right"><a href="http://abp.io?ref=tmpl" target="_blank">abp.io</a></p>
+    </abp-card-body>
+</abp-card>

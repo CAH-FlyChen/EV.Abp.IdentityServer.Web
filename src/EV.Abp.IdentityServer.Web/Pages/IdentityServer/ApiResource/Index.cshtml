@@ -1,0 +1,42 @@
+﻿@page
+@model EV.Abp.IdentityServer.Web.Pages.IdentityServer.ApiResource.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+@inherits EV.Abp.IdentityServer.Pages.IdentityServerPageBase
+@{
+    ViewData["Title"] = "index";
+}
+
+@section scripts
+    {
+    <abp-script src="/Pages/IdentityServer/ApiResource/index.js" />
+}
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <h2>IdentityServer</h2>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+                <abp-button id="NewButton"
+                            text="New"
+                            icon="plus"
+                            button-type="Primary" />
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="DataTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DisplayName</th>
+                    <th>Enabled</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

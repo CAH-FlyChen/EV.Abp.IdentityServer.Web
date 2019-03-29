@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>EV.Abp.IdentityServer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EV.Abp.IdentityServer.EntityFrameworkCore\EV.Abp.IdentityServer.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

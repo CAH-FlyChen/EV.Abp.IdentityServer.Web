@@ -1,0 +1,19 @@
+﻿@page
+@inherits EV.Abp.IdentityServer.Pages.IdentityServerPageBase
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model EV.Abp.IdentityServer.Web.Pages.IdentityServer.ApiResource.CreateModalModel
+@{
+    ViewData["Title"] = "CreateModal";
+    Layout = null;
+}
+
+<abp-dynamic-form abp-model="ApiResourceCreateDto" data-ajaxForm="true" asp-page="/IdentityServer/ApiResource/CreateModal">
+    <abp-modal>
+        <abp-modal-header title="New"></abp-modal-header>
+        <abp-modal-body>
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>
+
