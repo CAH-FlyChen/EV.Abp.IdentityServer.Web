@@ -16,15 +16,14 @@ namespace EV.Abp.IdentityServer
         public virtual string Name { get; protected set; }
 
         public virtual string DisplayName { get; set; }
-
         public virtual string Description { get; set; }
 
         public virtual bool Enabled { get; set; }
 
-        //public virtual List<ApiSecret> Secrets { get; protected set; }
+        public virtual List<ApiSecretDto> Secrets { get; protected set; }
 
-        //public virtual List<ApiScope> Scopes { get; protected set; }
+        public virtual List<ApiScopeDto> Scopes { get; protected set; }
 
-        //public virtual List<ApiResourceClaim> UserClaims { get; protected set; }
+        public virtual List<ApiResourceClaimDto> UserClaims { get; protected set; }
     }
 }

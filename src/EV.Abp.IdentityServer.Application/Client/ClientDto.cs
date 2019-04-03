@@ -30,13 +30,13 @@ namespace EV.Abp.IdentityServer
         public virtual int? ConsentLifetime { get; set; }
         public virtual int AbsoluteRefreshTokenLifetime { get; set; }
         public virtual int SlidingRefreshTokenLifetime { get; set; }
-        //public virtual List<ClientIdPRestriction> IdentityProviderRestrictions { get; set; }
-        //public virtual List<ClientPostLogoutRedirectUri> PostLogoutRedirectUris { get; set; }
-        //public virtual List<ClientRedirectUri> RedirectUris { get; set; }
-        //public virtual List<ClientCorsOrigin> AllowedCorsOrigins { get; set; }
-        //public virtual List<ClientGrantType> AllowedGrantTypes { get; set; }
-        //public virtual List<ClientSecret> ClientSecrets { get; set; }
-        //public virtual List<ClientScope> AllowedScopes { get; set; }
+        public virtual List<ClientIdPRestrictionDto> IdentityProviderRestrictions { get; set; }
+        public virtual List<ClientPostLogoutRedirectUriDto> PostLogoutRedirectUris { get; set; }
+        public virtual List<ClientRedirectUriDto> RedirectUris { get; set; }
+        public virtual List<ClientCorsOriginDto> AllowedCorsOrigins { get; set; }
+        public virtual List<ClientGrantTypeDto> AllowedGrantTypes { get; set; }
+        public virtual List<ClientSecretDto> ClientSecrets { get; set; }
+        public virtual List<ClientScopeDto> AllowedScopes { get; set; }
         public virtual string LogoUri { get; set; }
         public virtual string PairWiseSubjectSalt { get; set; }
         public virtual bool AlwaysSendClientClaims { get; set; }

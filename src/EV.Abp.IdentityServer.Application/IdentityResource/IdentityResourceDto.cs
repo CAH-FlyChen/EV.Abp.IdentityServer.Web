@@ -26,6 +26,6 @@ namespace EV.Abp.IdentityServer
 
         public virtual bool ShowInDiscoveryDocument { get; set; }
 
-        //public virtual List<IdentityClaim> UserClaims { get; set; }
+        public virtual List<IdentityClaimDto> UserClaims { get; set; }
     }
 }
