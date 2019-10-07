@@ -48,6 +48,10 @@ namespace EV.Abp.IdentityServer
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
+            context.Services.AddCors(options => options.AddPolicy("cors",
+            builder => builder.WithOrigins("http://localhost:9527", "http://c.example.com")
+            .AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin().AllowCredentials()));
+
             context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
             {
                 //options.AddAssemblyResource(
@@ -170,6 +174,8 @@ namespace EV.Abp.IdentityServer
             });
 
             app.UseAuditing();
+
+            app.UseCors("cors");
 
             app.UseMvcWithDefaultRouteAndArea();
 

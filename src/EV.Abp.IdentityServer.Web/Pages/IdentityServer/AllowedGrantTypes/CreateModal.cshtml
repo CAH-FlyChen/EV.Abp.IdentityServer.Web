@@ -1,0 +1,16 @@
+﻿@page
+@inherits EV.Abp.IdentityServer.Pages.IdentityServerPageBase
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model EV.Abp.IdentityServer.Web.Pages.IdentityServer.AllowedGrantTypes.CreateModalModel
+@{
+    ViewData["Title"] = "EditModal";
+    Layout = null;
+}
+
+<abp-modal id="myModal">
+    <abp-modal-header title="Modal title"></abp-modal-header>
+    <abp-modal-body>
+        Woohoo, you're reading this text in a modal!
+    </abp-modal-body>
+    <abp-modal-footer buttons="(@AbpModalButtons.Save|AbpModalButtons.Close)"></abp-modal-footer>
+</abp-modal>

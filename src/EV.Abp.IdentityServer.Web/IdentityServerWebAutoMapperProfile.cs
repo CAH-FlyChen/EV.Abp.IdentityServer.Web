@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Volo.Abp.IdentityServer.Clients;
 
 namespace EV.Abp.IdentityServer
 {
@@ -7,6 +8,15 @@ namespace EV.Abp.IdentityServer
         public IdentityServerWebAutoMapperProfile()
         {
             //Configure your AutoMapper mapping configuration here...
+            //CreateMap<Client, ClientDto>()
+            //.ForMember(
+            //   dst => dst.Enabled,
+            //   opts =>
+            //   {
+            //       opts.SetMappingOrder(0);
+            //   })
+            //.ForAllOtherMembers(t => t.SetMappingOrder(99));
+            
         }
     }
 }

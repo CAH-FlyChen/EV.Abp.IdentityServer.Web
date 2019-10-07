@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using EV.Abp.IdentityServer.Sub;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,10 +22,10 @@ namespace EV.Abp.IdentityServer
 
         public virtual bool Enabled { get; set; }
 
-        //public virtual List<ApiSecret> Secrets { get; protected set; }
+        public virtual List<ApiSecretDto> Secrets { get; protected set; }
 
-        //public virtual List<ApiScope> Scopes { get; protected set; }
+        public virtual List<ApiScopeDto> Scopes { get; protected set; }
 
-        //public virtual List<ApiResourceClaim> UserClaims { get; protected set; }
+        public virtual List<ApiResourceClaim> UserClaims { get; protected set; }
     }
 }

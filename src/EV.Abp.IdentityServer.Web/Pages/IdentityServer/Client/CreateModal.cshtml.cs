@@ -11,7 +11,7 @@ namespace EV.Abp.IdentityServer.Web.Pages.IdentityServer.Client
     public class CreateModalModel : IdentityServerPageModelBase
     {
         [BindProperty]
-        public ClientCreateUpdateDto ClientCreateDto { get; set; }
+        public ClientCreateUpdateWebDto ClientCreateDto { get; set; }
 
         public void OnGet()
         {

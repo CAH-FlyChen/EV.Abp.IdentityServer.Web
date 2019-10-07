@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EV.Abp.IdentityServer.sub;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.Application.Dtos;
@@ -26,6 +27,6 @@ namespace EV.Abp.IdentityServer
 
         public virtual bool ShowInDiscoveryDocument { get; set; }
 
-        //public virtual List<IdentityClaim> UserClaims { get; set; }
+        public virtual List<IdentityClaimDto> UserClaims { get; set; }
     }
 }

@@ -7,14 +7,214 @@
     Layout = null;
 }
 
-<abp-dynamic-form abp-model="ClientUpdateDto" data-ajaxForm="true" asp-page="/IdentityServer/Client/EditModal">
-    <abp-modal>
-        <abp-modal-header title="Update"></abp-modal-header>
-        <abp-modal-body>
-            <abp-input asp-for="Id" />
-            <abp-form-content />
-        </abp-modal-body>
-        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
-    </abp-modal>
-</abp-dynamic-form>
+@section scripts
+{
+    <abp-script src="/Pages/IdentityServer/Client/edit.js" />
+    }
+     <abp-modal size="Large">
+            <abp-modal-header title="Update"></abp-modal-header>
+            <abp-modal-body>
+                <abp-tabs>
+                    <abp-tab title="Basic">
+                        <abp-container>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.Enabled" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.ClientId" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.ClientName" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.Description" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.RequireClientSecret" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.RequirePkce" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AllowPlainTextPkce" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AllowAccessTokensViaBrowser" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AllowOfflineAccess" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column>
+                                    <label>AllowedGrantTypes &nbsp;<abp-button size="Small" button-type="Primary" icon="plus" id="aaa" /></label>
+                                    <abp-list-group flush="true">
+                                        @foreach (var x in Model.ClientUpdateDto.AllowedGrantTypes)
+                                        {
+                                            <abp-list-group-item>@x.GrantType</abp-list-group-item>
+                                        }
+                                    </abp-list-group>
+                                </abp-column>
+                                <abp-column>
+                                    <label>RedirectUris &nbsp;<abp-button size="Small" button-type="Primary">+</abp-button></label>
+                                    <abp-list-group flush="true">
+                                        @foreach (var x in Model.ClientUpdateDto.RedirectUris)
+                                        {
+                                            <abp-list-group-item>@x.RedirectUri</abp-list-group-item>
+                                        }
+                                    </abp-list-group>
+
+                                </abp-column>
+                                <abp-column>
+                                    <label>Properties &nbsp;<abp-button size="Small" button-type="Primary">+</abp-button></label>
+                                    <abp-list-group flush="true">
+                                        @foreach (var x in Model.ClientUpdateDto.Properties)
+                                        {
+                                            <abp-list-group-item>Type: @x.Key  @x.Value</abp-list-group-item>
+                                        }
+                                    </abp-list-group>
+                                </abp-column>
+                            </abp-row>
+                        </abp-container>
+                    </abp-tab>
+                    <abp-tab title="Authentication/Logout">
+                        <abp-container>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.FrontChannelLogoutUri" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.FrontChannelLogoutSessionRequired" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.BackChannelLogoutSessionRequired" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.EnableLocalLogin" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column>
+                                    <label>IdentityProviderRestrictions &nbsp;<abp-button size="Small" button-type="Primary">+</abp-button></label>
+                                    <abp-list-group flush="true">
+                                        @foreach (var x in Model.ClientUpdateDto.IdentityProviderRestrictions)
+                                        {
+                                            <abp-list-group-item>@x.Provider</abp-list-group-item>
+                                        }
+                                    </abp-list-group>
+                                </abp-column>
+                                <abp-row>
+                                    <abp-column>
+                                        <label>PostLogoutRedirectUris &nbsp;<abp-button size="Small" button-type="Primary">+</abp-button></label>
+                                        <abp-list-group flush="true">
+                                            @foreach (var x in Model.ClientUpdateDto.PostLogoutRedirectUris)
+                                            {
+                                                <abp-list-group-item>@x.PostLogoutRedirectUri</abp-list-group-item>
+                                            }
+                                        </abp-list-group>
+                                    </abp-column>
+                                </abp-row>
+                            </abp-row>
+                        </abp-container>
+
+                    </abp-tab>
+
+                    <abp-tab title="Token">
+
+                        <abp-container>
+                            <abp-row>
+
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.ProtocolType" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AuthorizationCodeLifetime" /></abp-column>
+                            </abp-row>
+
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AccessTokenType" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.PairWiseSubjectSalt" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AlwaysSendClientClaims" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.IncludeJwtId" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.UpdateAccessTokenClaimsOnRefresh" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AlwaysIncludeUserClaimsInIdToken" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.RefreshTokenUsage" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.ClientClaimsPrefix" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AccessTokenLifetime" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.IdentityTokenLifetime" /></abp-column>
+                            </abp-row>
+
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.RefreshTokenExpiration" /></abp-column>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AbsoluteRefreshTokenLifetime" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.SlidingRefreshTokenLifetime" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+
+                                <abp-column>
+                                    <label>Claims &nbsp;<abp-button size="Small" button-type="Primary">+</abp-button></label>
+                                    <abp-list-group flush="true">
+                                        @foreach (var x in Model.ClientUpdateDto.Claims)
+                                        {
+                                            <span>Type: @x.Type</span>
+                                        }
+                                    </abp-list-group>
+                                </abp-column>
+                            </abp-row>
+                        </abp-container>
+                    </abp-tab>
+
+                    <abp-tab title="Consent Screen">
+                        <abp-container>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.RequireConsent" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.AllowRememberConsent" /></abp-column>
+
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.ConsentLifetime" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.ClientUri" /></abp-column>
+                            </abp-row>
+                            <abp-row>
+                                <abp-column><abp-input asp-for="@Model.ClientUpdateDto.LogoUri" /></abp-column>
+                            </abp-row>
+                        </abp-container>
+
+                    </abp-tab>
+                    <abp-tab title="Device flow">
+
+                    </abp-tab>
+
+                </abp-tabs>
+
+
+
+            </abp-modal-body>
+            <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+        </abp-modal>
+
+
+
+
+
+
+
+
+@*<abp-dynamic-form abp-model="ClientUpdateDto" data-ajaxForm="true" asp-page="/IdentityServer/Client/EditModal">
+            <abp-modal>
+                <abp-modal-header title="Update"></abp-modal-header>
+                <abp-modal-body>
+                    <abp-input asp-for="Id" />
+                    <abp-form-content />
+                </abp-modal-body>
+                <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+            </abp-modal>
+    </abp-dynamic-form>*@
 
